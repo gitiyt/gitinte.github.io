@@ -6,7 +6,6 @@
     <title>GITINTE</title>
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <style>
-        /* تحسينات التصميم */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -15,14 +14,13 @@
             color: #333;
         }
         header {
-            background: linear-gradient(45deg, #B30909, #0E0000);
+            background: #0E0000;
             color: white;
             text-align: center;
             padding: 1.5rem 0;
         }
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
         }
         nav {
             background: #B30909;
@@ -34,39 +32,45 @@
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        nav a:hover {
-            color: #FFD700;
         }
         section {
             padding: 20px;
         }
-        .login-form {
-            margin: 20px auto;
-            max-width: 400px;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
         }
-        .login-form input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
+        .product-card {
+            background: white;
             border: 1px solid #ddd;
             border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .login-form button {
-            width: 100%;
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product-card h3 {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .product-card p {
+            color: #555;
+        }
+        .product-card button {
             background: #007BFF;
             color: white;
-            padding: 10px;
             border: none;
+            padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
         }
-        .login-form button:hover {
+        .product-card button:hover {
             background: #0056b3;
         }
         footer {
@@ -76,81 +80,58 @@
             padding: 10px 0;
             margin-top: 20px;
         }
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin: 20px auto;
+        }
+        .whatsapp-btn:hover {
+            background: #1EBE57;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>GITINTE</h1>
-        <p>Welcome to the future of intelligence!</p>
+        <p>You Are In The Right Website</p>
     </header>
-    <nav>
-        <a href="#products">Products</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About Us</a>
     </nav>
-    
-    <!-- نموذج تسجيل الدخول -->
-    <section id="login">
-        <h2>Login to Your Account</h2>
-        <div class="login-form">
-            <input type="text" id="username" placeholder="Enter your username">
-            <button onclick="login()">Login</button>
-        </div>
-    </section>
-    
-    <!-- قسم المنتجات -->
-    <section id="products" style="display: none;">
-        <h2>Welcome, <span id="user-display"></span>!</h2>
-        <p>Here are our exclusive products for you:</p>
+    <section id="products">
+        <h2>Our Products</h2>
         <div class="products">
             <div class="product-card">
                 <img src="images/product1.jpg" alt="Product 1">
                 <h3>1 Month</h3>
                 <p>$6.00</p>
-                <button onclick="buyNow('1 Month')">Buy Now</button>
+                <a href="https://wa.me/212705203639" target="_blank" class="whatsapp-btn">Chat on WhatsApp</a>
             </div>
             <div class="product-card">
                 <img src="images/product2.jpg" alt="Product 2">
                 <h3>3 Months</h3>
                 <p>$18.00</p>
-                <button onclick="buyNow('3 Months')">Buy Now</button>
+                <a href="https://wa.me/212705203639" target="_blank" class="whatsapp-btn">Chat on WhatsApp</a>
+            </div>
+            <div class="product-card">
+                <img src="images/product3.jpg" alt="Product 3">
+                <h3>1 Year</h3>
+                <p>$72.00</p>
+                <a href="https://wa.me/212705203639" target="_blank" class="whatsapp-btn">Chat on WhatsApp</a>
             </div>
         </div>
     </section>
-    
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions? Reach out to us on WhatsApp!</p>
+        <a href="https://wa.me/212705203639" target="_blank" class="whatsapp-btn">Chat on WhatsApp</a>
+    </section>
     <footer>
         <p>&copy; 2024 GITINTE. All rights reserved.</p>
     </footer>
-    
-    <script>
-        function login() {
-            const username = document.getElementById('username').value;
-            if (username) {
-                // تخزين اسم المستخدم محلياً
-                localStorage.setItem('username', username);
-                document.getElementById('user-display').innerText = username;
-                
-                // إظهار قسم المنتجات
-                document.getElementById('login').style.display = 'none';
-                document.getElementById('products').style.display = 'block';
-            } else {
-                alert('Please enter your username!');
-            }
-        }
-
-        // التحقق من تسجيل الدخول عند تحميل الصفحة
-        window.onload = function() {
-            const savedUsername = localStorage.getItem('username');
-            if (savedUsername) {
-                document.getElementById('user-display').innerText = savedUsername;
-                document.getElementById('login').style.display = 'none';
-                document.getElementById('products').style.display = 'block';
-            }
-        };
-
-        function buyNow(plan) {
-            alert(`You selected the ${plan} plan. Proceeding to checkout.`);
-        }
-    </script>
 </body>
 </html>
