@@ -1,50 +1,20 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    direction: rtl; /* Right to Left direction for Arabic */
-}
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-header {
-    background: #333;
-    color: #fff;
-    padding: 10px 20px;
-}
+// خدمة الملفات الثابتة
+app.use(express.static('public'));
 
-header h1 {
-    margin: 0;
-}
+// نقطة النهاية لجدول المباريات
+app.get('/schedule', (req, res) => {
+    const schedule = [
+        { match: "الفريق أ ضد الفريق ب", time: "18:00 بتوقيت UTC" },
+        { match: "الفريق ج ضد الفريق د", time: "20:00 بتوقيت UTC" }
+    ];
+    res.json(schedule);
+});
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: right; /* Align nav to the right */
-}
-
-nav ul li {
-    margin-left: 20px; /* Adjust spacing for RTL */
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-main {
-    padding: 20px;
-}
-
-video {
-    width: 100%;
-    max-width: 800px;
-    margin: 20px 0;
-}
-
-footer {
-    text-align: center;
-    padding: 10px;
-    background: #333;
-    color: #fff;
-}
+// بدء الخادم
+app.listen(PORT, () => {
+    console.log(`الخادم يعمل على http://localhost:${PORT}`);
+});
